@@ -1,26 +1,24 @@
 # SubZero Workshop
 
-## Pipeline Update
+## Image Uploads
 
-Update your pipeline using [pipeline-template.yaml](pipeline-template.yaml) before continuing.
+Lambda functions associated with the API Gateway endpoints will now process uploaded images and return data about those uploaded images.
 
-## Base API
-
-With a pipeline in place, create the base API for the application. Your updates will automatically deploy as you push commits to GitHub.
+Each Lambda function servers a specific purpose. `Upload` accepts an image file and writes it to an S3 bucket. The `List` function returns a JSON array of all the uploaded files.
 
 ### AWS Services / Features
 
-- Serverless (SAM) Transform
-- API Gateway
-- Lambda
-- Route 53
+- S3
+- IAM
 
 ### Module Challenge
 
-Add a second `AWS::Serverless::Function` resource to the template to create a `GET /api/images` endpoint. Use `/src/get_images` for the `CodeUri`. 
+The `GET /api/images` endpoint is not functioning. Compare the `List` Lambda function resource to the `Upload` functionn and add the missing elements required to grant S3 read permissions.
 
-As an additional challenge update both Lambda function resources to use SAM's `Globals` feature.
+Reference the [SAM Policy Templates](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html) documentation to find the appropriate role.
 
-### Next Module: [Cognito](../3_Cognito/)
+As an additional challenge make use of SAM's `Globals` feature.
+
+### Next Module: [Image Processing](../5_Image_Processing/)
 
 Once instructed, move on to the next module and update your repository with the provided files (overwrite existing files and your changes).
